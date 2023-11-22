@@ -24,7 +24,7 @@ public class Utils {
         scanner.nextLine();
     }
 
-    public String getReadableDate(LocalDate date) {
+    public static String getReadableDate(LocalDate date) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         return date.format(formatter);
     }
@@ -35,6 +35,10 @@ public class Utils {
         try {
             formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
             localDate = LocalDate.parse(date, formatter);
+            if (localDate.isAfter(LocalDate.now()) || localDate.isBefore(LocalDate.now().minusYears(150))) {
+                System.out.println("Data inválida. Caso seja alguém do futuro ou tenha mais de 150 anos?");
+                return null;
+            }
         } catch (Exception e) {
             System.out.println("Data inválida.");
             return null;
@@ -119,7 +123,7 @@ public class Utils {
             System.out.println("Paciente não encontrado.");
             return;
         }
-        System.out.println("Nome: " + patient.getName() + " Idade: " + patient.getAge());
+        System.out.println("Nome: " + patient.getName() + " | Idade: " + patient.getAge() + " | Data de nascimento: " + getReadableDate(patient.getBirthDate()));
 
         ArrayList<Appointment> appointments = patient.getAppointments();
         if(appointments.isEmpty()){
@@ -128,7 +132,7 @@ public class Utils {
         }
         System.out.println("Consultas:");
         for (Appointment appointment : appointments) {
-            System.out.println("Data: " + appointment.getDate() + "| Descrição: " + appointment.getDescription());
+            System.out.println("Data: " + appointment.getDate() + " | Descrição: " + appointment.getDescription());
         }
     }
 

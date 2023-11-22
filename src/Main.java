@@ -15,33 +15,34 @@ public class Main {
             Utils.printMenu();
             option = Utils.getMenuOption(scanner);
             switch (option) {
-                case INCLUIR_PACIENTE:
+                case Menu.INCLUIR_PACIENTE:
                     Utils.includePatient(scanner, appointmentSystem);
                     Utils.pause(scanner);
                     break;
-                case ALTERAR_PACIENTE:
+                case Menu.ALTERAR_PACIENTE:
                     Utils.changePatient(scanner, appointmentSystem);
                     Utils.pause(scanner);
                     break;
-                case REALIZAR_CONSULTA:
+                case Menu.REALIZAR_CONSULTA:
                     Utils.makeAppointment(scanner, appointmentSystem);
                     Utils.pause(scanner);
                     break;
-                case LISTAR_PACIENTES:
+                case Menu.LISTAR_PACIENTES:
                     Utils.listPatients(appointmentSystem);
                     Utils.pause(scanner);
                     break;
-                case MOSTRAR_PACIENTE:
+                case Menu.MOSTRAR_PACIENTE:
                     Utils.showPatient(scanner, appointmentSystem);
                     Utils.pause(scanner);
                     break;
-                case APAGAR_PACIENTE:
+                case Menu.APAGAR_PACIENTE:
                     Utils.deletePatient(scanner, appointmentSystem);
                     Utils.pause(scanner);
                     break;
             }
 
         } while (option != Menu.SAIR);
+        System.out.println("Até mais!");
         scanner.close();
     }
 }
