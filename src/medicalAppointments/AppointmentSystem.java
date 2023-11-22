@@ -22,7 +22,6 @@ public class AppointmentSystem {
     }
 
     public void removePatient(Patient patient) {
-        //remove patient and their appointments
         patients.remove(patient);
         appointments.removeAll(patient.getAppointments());
     }

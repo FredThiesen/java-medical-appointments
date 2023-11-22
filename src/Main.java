@@ -8,7 +8,7 @@ public class Main {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        Menu option = null;
+        Menu option;
 
         AppointmentSystem appointmentSystem = new AppointmentSystem();
         do {
